@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AliBaba</string>
+
+    <string name="search">جستجو</string>
 </resources>
