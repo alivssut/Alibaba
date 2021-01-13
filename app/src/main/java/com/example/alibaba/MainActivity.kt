@@ -2,31 +2,63 @@ package com.example.alibaba
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.alibaba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    lateinit var toolbar: androidx.appcompat.widget.Toolbar
+    private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         init()
+        setContentView(binding.root)
 
-        var  homeFragment = HomeFragment()
+        binding.mainHomeAction.setOnClickListener {
+            setHome()
+        }
+        binding.mainMyTravelAction.setOnClickListener {
+            setMyTravel()
+        }
+        binding.mainAccountAction.setOnClickListener {
+            setAccount()
+        }
+    }
 
+    fun init(){
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.pageToolBar).apply {
+            title = ""
+        }
+        setHome()
+    }
+
+    fun setHome(){
+        var  homeFragment = HomeFragment(binding.pageToolBar , binding.toolbarTitle)
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_home_container, homeFragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
-
     }
 
-    fun init(){
-        toolbar = findViewById(R.id.page_tool_bar)
-        setSupportActionBar(toolbar).apply {
-            title = ""
-        }
+    fun setMyTravel(){
+        var  myTravelFragment = MyTravelFragment(binding.pageToolBar , binding.toolbarTitle)
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.main_home_container, myTravelFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
+    fun setAccount(){
+        var  accountFragment = AccountFragment(binding.pageToolBar , binding.toolbarTitle)
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.main_home_container, accountFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }

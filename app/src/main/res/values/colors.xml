@@ -3,4 +3,15 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="actionbarFirst">#FFC107</color>
+    <color name="actionbarSecond">#FAC539</color>
+    <color name="actionbarThird">#F7DF96</color>
+    <color name="actionbarForth">#E2DDC6</color>
+    <color name="actionbarFifth">#FFFFFF</color>
+
+    <color name="toolbarColor">#FFC107</color>
+    <color name="toolbarWhite">#FFFFFF</color>
+
+    <color name="line">#8F8F8F</color>
 </resources>

@@ -2,4 +2,11 @@
     <string name="app_name">AliBaba</string>
 
     <string name="search">جستجو</string>
+
+    <string name="accountTitle">حساب کاربری</string>
+    <string name="myTravelTitle">سفر های من</string>
+    <string name="homTitle">alibaba.ir</string>
+
+    <string name="destination">مقصد</string>
+    <string name="origin">مبدا</string>
 </resources>
