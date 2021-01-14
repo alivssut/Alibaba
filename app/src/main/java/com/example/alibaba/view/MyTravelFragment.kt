@@ -1,4 +1,4 @@
-package com.example.alibaba
+package com.example.alibaba.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.alibaba.databinding.FragmentAccountBinding
-import com.example.alibaba.databinding.FragmentHomeBinding
+import com.example.alibaba.R
 import com.example.alibaba.databinding.FragmentMyTravelBinding
 
 class MyTravelFragment (val toolbar: androidx.appcompat.widget.Toolbar , val title : TextView): Fragment(){

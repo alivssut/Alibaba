@@ -1,23 +1,23 @@
-package com.example.alibaba
+package com.example.alibaba.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.alibaba.databinding.FragmentBusBinding
+import com.example.alibaba.R
 
-class BusFragment : Fragment(){
-    private lateinit var binding: FragmentBusBinding
+class RegisterFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBusBinding.inflate(layoutInflater)
+        val root = inflater.inflate(R.layout.fragment_register, container, false)
 
 
-        return binding.root
+
+        return root
     }
 }

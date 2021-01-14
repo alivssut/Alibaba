@@ -9,4 +9,10 @@
 
     <string name="destination">مقصد</string>
     <string name="origin">مبدا</string>
+
+    <string name="flyTitle">پرواز</string>
+    <string name="busTitle">اتوبوس</string>
+    <string name="trainTitle">قطار</string>
+    <string name="tourTitle">تور</string>
+    <string name="hotelTitle">هتل</string>
 </resources>

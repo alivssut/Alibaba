@@ -1,4 +1,4 @@
-package com.example.alibaba
+package com.example.alibaba.view
 
 import android.content.Intent
 import android.os.Build
@@ -6,15 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.alibaba.databinding.ActivityMainBinding
+import com.example.alibaba.R
 import com.example.alibaba.databinding.FragmentHomeBinding
 
 class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: TextView) :
@@ -71,38 +68,58 @@ class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: Te
         }
 
         binding.homeBusAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "bus")
+            startActivity(intent)
         }
         binding.homeBusDrawerAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "bus")
+            startActivity(intent)
         }
 
         binding.homeFlyAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "fly")
+            startActivity(intent)
         }
         binding.homeFlyDrawerAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "fly")
+            startActivity(intent)
         }
 
         binding.homeTrainAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "train")
+            startActivity(intent)
         }
         binding.homeTrainDrawerAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "train")
+            startActivity(intent)
         }
 
         binding.homeTourAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "tour")
+            startActivity(intent)
         }
         binding.homeTourDrawerAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "tour")
+            startActivity(intent)
         }
 
         binding.homeHotelAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "hotel")
+            startActivity(intent)
         }
         binding.homeHotelDrawerAction.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext , TicketActivity::class.java))
+            val intent = Intent(activity!!.baseContext , TicketActivity::class.java)
+            intent.putExtra("name" , "hotel")
+            startActivity(intent)
         }
 
         return binding.root

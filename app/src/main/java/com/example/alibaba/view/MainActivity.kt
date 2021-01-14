@@ -1,10 +1,10 @@
-package com.example.alibaba
+package com.example.alibaba.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.alibaba.R
 import com.example.alibaba.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setHome(){
-        var  homeFragment = HomeFragment(binding.pageToolBar , binding.toolbarTitle)
+        var  homeFragment = HomeFragment(
+            binding.pageToolBar,
+            binding.toolbarTitle
+        )
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_home_container, homeFragment)
@@ -45,7 +48,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setMyTravel(){
-        var  myTravelFragment = MyTravelFragment(binding.pageToolBar , binding.toolbarTitle)
+        var  myTravelFragment = MyTravelFragment(
+            binding.pageToolBar,
+            binding.toolbarTitle
+        )
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_home_container, myTravelFragment)
@@ -54,7 +60,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setAccount(){
-        var  accountFragment = AccountFragment(binding.pageToolBar , binding.toolbarTitle)
+        var  accountFragment = AccountFragment(
+            binding.pageToolBar,
+            binding.toolbarTitle
+        )
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_home_container, accountFragment)
