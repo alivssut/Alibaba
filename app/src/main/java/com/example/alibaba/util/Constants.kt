@@ -1,6 +1,7 @@
 package com.example.test.util
 
 import com.example.alibaba.model.Cities
+import com.example.alibaba.model.TicketRequest
 
 class Constants {
     companion object{
@@ -10,8 +11,10 @@ class Constants {
         val orogin : String? = null
         val destination : String? = null
 
-        val originCity : Cities? = null
-        val destinationCity : Cities? = null
-        val date : String? = null
+        var originCity : Cities? = null
+        var destinationCity : Cities? = null
+        var date : String? = null
+
+        var requesForData : TicketRequest? = null
     }
 }

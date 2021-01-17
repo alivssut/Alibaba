@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:background="@drawable/corner_shape">
+
+    <TextView
+        android:id="@+id/ticket_item_bus_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#A4A8EC"
+        android:padding="3dp"
+        android:text="VIP"
+        android:textColor="#072D9E" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/ticket_item_proposal"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/speaker" />
+
+        <TextView
+            android:id="@+id/ticket_item_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:layout_toLeftOf="@id/ticket_item_proposal"
+            android:padding="5dp"
+            android:text="شرکت حمل بار "
+            android:textColor="#000" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="7dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="---------------------------------------------------"/>
+
+            <TextView
+                android:id="@+id/ticket_item_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تهران پایانه جنوب"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="7dp">
+
+            <TextView
+                android:id="@+id/ticket_item_destination_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="اصفهان"
+                android:layout_alignParentLeft="true"/>
+            <TextView
+                android:id="@+id/ticket_item_origin_terminal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="تهران چایانه جنوب"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp">
+
+        <TextView
+            android:id="@+id/ticket_item_available_seats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ظرفیت موجود 10 نفر"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/ticket_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="720,000"
+            android:layout_toRightOf="@id/ticket_item_rial_"/>
+        <TextView
+            android:id="@+id/ticket_item_rial_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:text="ریال"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

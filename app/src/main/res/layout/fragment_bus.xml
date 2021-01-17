@@ -53,6 +53,7 @@
                         android:src="@drawable/speaker" />
 
                     <TextView
+                        android:id="@+id/bus_origin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -60,7 +61,6 @@
                         android:text="@string/origin"
                         android:textSize="20sp"
                         android:textStyle="bold" />
-
 
                 </RelativeLayout>
 
@@ -99,6 +99,7 @@
                         android:src="@drawable/speaker" />
 
                     <TextView
+                        android:id="@+id/bus_destination"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -138,6 +139,7 @@
                     android:src="@drawable/speaker" />
 
                 <TextView
+                    android:id="@+id/bus_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -159,6 +161,7 @@
 
 
             <Button
+                android:id="@+id/bus_btn_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

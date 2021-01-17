@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.CalendarActivity"></activity>
+        <activity android:name=".view.SearchTicketActivity"></activity>
+        <activity android:name=".view.CalendarActivity" />
         <activity android:name=".view.CitiesActivity" />
         <activity android:name=".view.TicketActivity" />
         <activity android:name=".view.MainActivity">

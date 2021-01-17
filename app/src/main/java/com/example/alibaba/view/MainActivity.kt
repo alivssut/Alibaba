@@ -2,10 +2,12 @@ package com.example.alibaba.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.alibaba.R
 import com.example.alibaba.databinding.ActivityMainBinding
+import com.example.test.util.Constants
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -25,6 +27,14 @@ class MainActivity : AppCompatActivity() {
         binding.mainAccountAction.setOnClickListener {
             setAccount()
         }
+
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     fun init(){

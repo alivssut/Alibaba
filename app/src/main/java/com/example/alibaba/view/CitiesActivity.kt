@@ -2,14 +2,12 @@ package com.example.alibaba.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alibaba.R
 import com.example.alibaba.databinding.ActivityCitiesBinding
 import com.example.alibaba.factory.CitiesActivityViewModelFactory
-import com.example.alibaba.model.Cities
 import com.example.alibaba.viewModel.CitiesActivityViewModel
 import com.example.test.repository.Repository
 
@@ -32,22 +30,21 @@ class CitiesActivity : AppCompatActivity() {
             title = ""
         }
 
+        val state: String = intent.getStringExtra("state")!!
 
-        val repository  = Repository(busCitiesUrl)
+        val repository  = Repository(busCitiesUrl , state)
         repository.recyclerView = recyclerView
 
         val viewModelFactory = CitiesActivityViewModelFactory(repository)
 
         viewModel = ViewModelProvider(this , viewModelFactory).get(CitiesActivityViewModel::class.java)
-
-        var l : MutableList<Cities> = arrayListOf()
-        l.add(Cities("name" , "sd"))
+//        Toast.makeText(this , Constants.citiesList.toString() , Toast.LENGTH_LONG).show()
 
         viewModel.listOfcities(this)
         viewModel.myResponse.observe(this , Observer { response ->
 
-            Toast.makeText(this , response.toString() , Toast.LENGTH_LONG).show()
 
         })
     }
+
 }
