@@ -7,6 +7,8 @@ class Constants {
         const val BASE_URL = "https://ws.alibaba.ir/api/v1/"
         var citiesList : MutableList<Cities> = arrayListOf()
 
+        var a = ""
+
         val orogin : String? = null
         val destination : String? = null
 

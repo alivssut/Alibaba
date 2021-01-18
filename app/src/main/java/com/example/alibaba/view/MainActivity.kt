@@ -2,14 +2,17 @@ package com.example.alibaba.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.alibaba.MainHeadJsonParser
 import com.example.alibaba.R
 import com.example.alibaba.databinding.ActivityMainBinding
+import com.example.test.repository.Repository
 import com.example.test.util.Constants
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() ,Repository.Iconnect{
     private lateinit var binding: ActivityMainBinding
 
 
@@ -79,5 +82,18 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.main_home_container, accountFragment)
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
+    }
+
+    override fun set() {
+        Toast.makeText(this , "connect" , Toast.LENGTH_LONG).show()
+        Log.i("c " , Constants.a)
+
+
+        var mainHeadJsonParser = MainHeadJsonParser()
+        var b = mainHeadJsonParser.parseJson(Constants.a)
+
+        Log.i("b " , b.toString())
+
+
     }
 }

@@ -11,12 +11,20 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.alibaba.R
 import com.example.alibaba.databinding.FragmentHomeBinding
+import com.example.alibaba.factory.BusViewModeFactory
+import com.example.alibaba.factory.HomeViewModelFactory
+import com.example.alibaba.viewModel.BusViewModel
+import com.example.alibaba.viewModel.HomeViewModel
+import com.example.test.repository.Repository
 
-class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: TextView) :
+class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: TextView):
     Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    lateinit var viewModel: HomeViewModel
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
@@ -121,6 +129,20 @@ class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: Te
             intent.putExtra("name" , "hotel")
             startActivity(intent)
         }
+
+
+        val repository = Repository("mobile/applications/159/page/home?headerVersion=0&bodyVersion=0&footerVersion=0", "")
+        val viewModelFactory = HomeViewModelFactory(repository)
+
+        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+
+
+        viewModel.getDetails(activity!!)
+
+        viewModel.myResponse.observe(activity!!, Observer { response ->
+
+
+        })
 
         return binding.root
     }

@@ -20,6 +20,10 @@ class Repository(private val url: String, var state: String) {
     var recyclerView: RecyclerView? = null
     var liveData: MutableLiveData<MutableList<Cities>> = MutableLiveData()
 
+    interface Iconnect {
+        fun set()
+    }
+
     suspend fun getBusStations(activity: Activity): MutableList<Cities> {
         var list: MutableList<Cities> = arrayListOf()
         try {
@@ -147,7 +151,7 @@ class Repository(private val url: String, var state: String) {
                 Method.GET,
                 path,
                 Response.Listener { response ->
-                    Log.d("fly " , response.toString())
+                    Log.d("fly ", response.toString())
                     val internationalFlyJsonParser = InternationalFlyJsonParser()
                     list = arrayListOf()
                     list = internationalFlyJsonParser.parseJson(response)
@@ -159,6 +163,37 @@ class Repository(private val url: String, var state: String) {
                         LinearLayoutManager(activity)
                     recyclerView!!.layoutManager = layoutManager
                     recyclerView!!.adapter = adapter
+
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG)
+                        .show()
+                    Log.i("error ====>: ", error.toString())
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG).show()
+
+                }
+            ) {}
+            queue.add(request)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
+    }
+
+    suspend fun getMainDetails(activity: Activity): MutableList<MainHead> {
+        var list: MutableList<MainHead> = arrayListOf()
+        try {
+            val path =
+                Constants.BASE_URL + url
+            val queue = Volley.newRequestQueue(activity)
+            val request: StringRequest = object : StringRequest(
+                Method.GET,
+                path,
+                Response.Listener { response ->
+                    Log.d("fly ", response.toString())
+                    Constants.a = response
+                    (activity as? Iconnect)?.set()
+
 
                 },
                 Response.ErrorListener { error ->
@@ -189,7 +224,7 @@ class Repository(private val url: String, var state: String) {
                 Method.GET,
                 path,
                 Response.Listener { response ->
-                    Log.d("sown" , response.toString())
+                    Log.d("sown", response.toString())
 //                    Toast.makeText(activity.baseContext, response.toString().substring(10 , 20), Toast.LENGTH_LONG).show()
 
                     val ticketsJsonParser = TicketsJsonParser()
@@ -218,7 +253,6 @@ class Repository(private val url: String, var state: String) {
         }
         return list
     }
-
 
 
 }

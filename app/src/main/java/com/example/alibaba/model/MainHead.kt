@@ -1,11 +1,11 @@
 package com.example.alibaba.model
 
 class MainHead(
-    var mainProducts: MainProducts,
-    var sliderCollections: SliderCollections,
+    var mainProducts: MutableList<MainProducts>,
+    var sliderCollections: MutableList<SliderCollections>,
     var secondaryProducts: SecondaryProducts,
-    var bannerCollection: BannerCollection,
-    var sliderCollections2: SliderCollections
+    var bannerCollection: MutableList<BannerCollection>,
+    var sliderCollections2: MutableList<SliderCollections>
 
 )
 
