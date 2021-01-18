@@ -1,29 +1,28 @@
 package com.example.alibaba
 
-import android.util.Log
-import com.example.alibaba.model.BusStations
 import com.example.alibaba.model.Cities
+import com.example.alibaba.model.DomesticFly
 import com.example.alibaba.util.Utils
-import com.google.gson.JsonObject
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.InputStream
 
-class CitiesJsonParser {
-    fun parseJson(input: InputStream?): List<Cities> {
+class DomesticFlyJsonParser {
+    fun parseJson(input: InputStream?): List<DomesticFly> {
         val content: String = Utils.convert(input)
         return parseJson(content)
     }
 
-    fun parseJson(jsonString: String): MutableList<Cities> {
+    fun parseJson(jsonString: String): MutableList<DomesticFly> {
         try {
             jsonObject = JSONObject(jsonString)
-            jsonObject = jsonObject.getJSONObject("result")
-            jsonArray = jsonObject.getJSONArray("items")
+            jsonArray = jsonObject.getJSONArray("result")
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
-                val news = Cities(jsonObject.getString("domainCode") , jsonObject.getString("name"))
+                var isPopular = false
+                if (jsonObject.getString("isPopular") == "true")isPopular = true
+                val news = DomesticFly(jsonObject.getString("name") , jsonObject.getString("domainCode") , isPopular )
                 namesList.add(news)
             }
         } catch (e: JSONException) {
@@ -35,7 +34,7 @@ class CitiesJsonParser {
     companion object {
         lateinit var jsonArray: JSONArray
         lateinit var jsonObject: JSONObject
-        var namesList: MutableList<Cities> = arrayListOf()
+        var namesList: MutableList<DomesticFly> = arrayListOf()
     }
 
     init {

@@ -1,7 +1,5 @@
 package com.example.test.repository
 
-//import com.example.test.api.RetrofitInstance
-//import com.example.test.model.Post
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
@@ -9,21 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.alibaba.CitiesJsonParser
-import com.example.alibaba.TicketsJsonParser
-import com.example.alibaba.model.Cities
-import com.example.alibaba.model.Tickets
-import com.example.alibaba.view.CitiesAdapter
-import com.example.alibaba.view.TicketsAdapter
+import com.example.alibaba.*
+import com.example.alibaba.model.*
+import com.example.alibaba.view.*
 import com.example.test.util.Constants
-import kotlinx.coroutines.channels.ticker
-import org.json.JSONException
-import org.json.JSONObject
 
 class Repository(private val url: String, var state: String) {
     //    var adapter: CitiesAdapter? = null
@@ -41,6 +31,7 @@ class Repository(private val url: String, var state: String) {
                 path,
                 Response.Listener { response ->
                     val citiesJsonParser = CitiesJsonParser()
+                    list = arrayListOf()
                     list = citiesJsonParser.parseJson(response)
 
                     Constants.citiesList = list
@@ -67,6 +58,122 @@ class Repository(private val url: String, var state: String) {
             Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
         }
         return Constants.citiesList
+    }
+
+    suspend fun getTrainStations(activity: Activity): MutableList<TrainStations> {
+        var list: MutableList<TrainStations> = arrayListOf()
+        try {
+            val path =
+                Constants.BASE_URL + url
+            val queue = Volley.newRequestQueue(activity)
+            val request: StringRequest = object : StringRequest(
+                Method.GET,
+                path,
+                Response.Listener { response ->
+                    val trainStationJsonParser = TrainStationJsonParser()
+                    list = arrayListOf()
+                    list = trainStationJsonParser.parseJson(response)
+
+
+                    val adapter = TrainStationAdapter(list, activity, state)
+                    recyclerView!!.itemAnimator = DefaultItemAnimator()
+                    val layoutManager: RecyclerView.LayoutManager =
+                        LinearLayoutManager(activity)
+                    recyclerView!!.layoutManager = layoutManager
+                    recyclerView!!.adapter = adapter
+
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG)
+                        .show()
+                    Log.i("error ====>: ", error.toString())
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG).show()
+
+                }
+            ) {}
+            queue.add(request)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
+    }
+
+    suspend fun getDomesticFlyCities(activity: Activity): MutableList<DomesticFly> {
+        var list: MutableList<DomesticFly> = arrayListOf()
+        try {
+            val path =
+                Constants.BASE_URL + url
+            val queue = Volley.newRequestQueue(activity)
+            val request: StringRequest = object : StringRequest(
+                Method.GET,
+                path,
+                Response.Listener { response ->
+                    Toast.makeText(activity.baseContext, "res", Toast.LENGTH_LONG).show()
+                    val domesticFlyJsonParser = DomesticFlyJsonParser()
+                    list = arrayListOf()
+                    list = domesticFlyJsonParser.parseJson(response)
+
+
+                    val adapter = DomesticFlyAdapter(list, activity, state)
+                    recyclerView!!.itemAnimator = DefaultItemAnimator()
+                    val layoutManager: RecyclerView.LayoutManager =
+                        LinearLayoutManager(activity)
+                    recyclerView!!.layoutManager = layoutManager
+                    recyclerView!!.adapter = adapter
+
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG)
+                        .show()
+                    Log.i("error ====>: ", error.toString())
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG).show()
+
+                }
+            ) {}
+            queue.add(request)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
+    }
+
+    suspend fun getInternationalFlyCities(activity: Activity): MutableList<InternationalFly> {
+        var list: MutableList<InternationalFly> = arrayListOf()
+        try {
+            val path =
+                Constants.BASE_URL + url
+            val queue = Volley.newRequestQueue(activity)
+            val request: StringRequest = object : StringRequest(
+                Method.GET,
+                path,
+                Response.Listener { response ->
+                    Log.d("fly " , response.toString())
+                    val internationalFlyJsonParser = InternationalFlyJsonParser()
+                    list = arrayListOf()
+                    list = internationalFlyJsonParser.parseJson(response)
+
+
+                    val adapter = InternationalFlyAdapter(list, activity, state)
+                    recyclerView!!.itemAnimator = DefaultItemAnimator()
+                    val layoutManager: RecyclerView.LayoutManager =
+                        LinearLayoutManager(activity)
+                    recyclerView!!.layoutManager = layoutManager
+                    recyclerView!!.adapter = adapter
+
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG)
+                        .show()
+                    Log.i("error ====>: ", error.toString())
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG).show()
+
+                }
+            ) {}
+            queue.add(request)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
     }
 
 
@@ -111,5 +218,7 @@ class Repository(private val url: String, var state: String) {
         }
         return list
     }
+
+
 
 }

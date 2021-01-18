@@ -14,4 +14,6 @@
     <color name="toolbarWhite">#FFFFFF</color>
 
     <color name="line">#8F8F8F</color>
+
+    <color name="black">#000</color>
 </resources>

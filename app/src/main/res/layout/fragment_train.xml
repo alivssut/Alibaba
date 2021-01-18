@@ -22,64 +22,7 @@
                     android:layout_height="50dp"
                     android:background="#F5D006" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/corner_shape"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:padding="15dp"
-                            android:src="@drawable/speaker" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="پرواز خارجی"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:padding="15dp"
-                            android:src="@drawable/speaker" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="پرواز داخلی"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </RelativeLayout>
 
 
             <LinearLayout
@@ -104,11 +47,13 @@
                         android:layout_weight="1">
 
                         <Button
+                            android:id="@+id/train_btn_return"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="رفت و برگشت"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:layout_margin="5dp"/>
 
                     </RelativeLayout>
 
@@ -118,11 +63,14 @@
                         android:layout_weight="1">
 
                         <Button
+                            android:id="@+id/train_btn_went"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="رفت"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:layout_margin="5dp"
+                            android:background="@color/toolbarColor"/>
 
                     </RelativeLayout>
 
@@ -139,6 +87,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/train_select_origin"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
@@ -150,6 +99,7 @@
                             android:layout_weight="6">
 
                             <TextView
+                                android:id="@+id/train_origin"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -196,6 +146,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/train_select_destination"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
@@ -207,6 +158,7 @@
                             android:layout_weight="6">
 
                             <TextView
+                                android:id="@+id/train_destination"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -243,6 +195,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/train_select_date"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginLeft="15dp"
@@ -258,6 +211,7 @@
                         android:layout_weight="6">
 
                         <TextView
+                            android:id="@+id/train_calendar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
@@ -292,6 +246,7 @@
                     android:background="@color/line" />
 
                 <LinearLayout
+                    android:id="@+id/train_select_passengers_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -379,6 +334,7 @@
                         android:textStyle="bold" />
 
                     <CheckBox
+                        android:id="@+id/train_select_kupe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp" />
@@ -396,6 +352,7 @@
 
             </LinearLayout>
 
+            </RelativeLayout>
 
         </LinearLayout>
 

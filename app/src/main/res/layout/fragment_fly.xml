@@ -34,6 +34,7 @@
                     android:padding="5dp">
 
                     <LinearLayout
+                        android:id="@+id/plain_international"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -46,6 +47,7 @@
                             android:src="@drawable/speaker" />
 
                         <TextView
+                            android:id="@+id/plain_international_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -56,6 +58,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/plain_domestic"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -68,12 +71,14 @@
                             android:src="@drawable/speaker" />
 
                         <TextView
+                            android:id="@+id/plain_domestic_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="پرواز داخلی"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textColor="#000"/>
 
                     </LinearLayout>
 
@@ -104,6 +109,7 @@
                         android:layout_weight="1">
 
                         <Button
+                            android:id="@+id/plain_btn_return"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
@@ -118,11 +124,13 @@
                         android:layout_weight="1">
 
                         <Button
+                            android:id="@+id/plain_btn_went"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:text="رفت"
-                            android:textSize="15sp" />
+                            android:textSize="15sp"
+                            android:background="@color/toolbarColor"/>
 
                     </RelativeLayout>
 
@@ -139,6 +147,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/plain_select_origin"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
@@ -150,6 +159,7 @@
                             android:layout_weight="6">
 
                             <TextView
+                                android:id="@+id/plain_origin"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -196,6 +206,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/plain_select_destination"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:orientation="horizontal"
@@ -207,6 +218,7 @@
                             android:layout_weight="6">
 
                             <TextView
+                                android:id="@+id/plain_destination"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true"
@@ -243,6 +255,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/plain_select_date"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginLeft="15dp"
@@ -258,6 +271,7 @@
                         android:layout_weight="6">
 
                         <TextView
+                            android:id="@+id/plain_calendar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
@@ -292,6 +306,7 @@
                     android:background="@color/line" />
 
                 <LinearLayout
+                    android:id="@+id/plain_select_passengers_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"

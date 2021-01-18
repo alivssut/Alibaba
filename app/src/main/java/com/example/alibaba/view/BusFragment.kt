@@ -33,6 +33,10 @@ class BusFragment : Fragment() {
         Constants.destinationCity = null
         Constants.date = null
 
+        Constants.originCity = null
+        Constants.destinationCity = null
+        Constants.date = null
+
         val repository = Repository("s", "")
         val viewModelFactory = BusViewModeFactory(repository)
 
@@ -46,17 +50,21 @@ class BusFragment : Fragment() {
 //        })
 
         binding.busSelectDestination.setOnClickListener {
-            var intent = Intent(activity!!.baseContext, CitiesActivity::class.java)
+            val intent = Intent(activity!!.baseContext, CitiesActivity::class.java)
             intent.putExtra("state", "destination")
+            intent.putExtra("type", "bus")
             startActivity(intent)
         }
         binding.busSelectOrigin.setOnClickListener {
-            var intent = Intent(activity!!.baseContext, CitiesActivity::class.java)
+            val intent = Intent(activity!!.baseContext, CitiesActivity::class.java)
             intent.putExtra("state", "origin")
+            intent.putExtra("type", "bus")
             startActivity(intent)
         }
         binding.busSelectDate.setOnClickListener {
-            startActivity(Intent(activity!!.baseContext, CalendarActivity::class.java))
+            val intent = Intent(activity!!.baseContext, CalendarActivity::class.java)
+            intent.putExtra("count", "1")
+            startActivity(intent)
         }
 
 
