@@ -165,8 +165,8 @@ class MainHeadJsonParser {
                     var bennerArray = bannerObject.getJSONArray("bannerItem2")
                     for (j in 0 until bennerArray.length()) {
                         var item = bennerArray.getJSONObject(j)
-                        bannerCollection.add(
-                            BannerCollection(
+                        bannerCollection2Item.add(
+                            BannerCollection2(
                                 item.getString("title"),
                                 item.getString("background")
                             )
