@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.alibaba.databinding.FragmentTrainBinding
 import com.example.test.util.Constants
 import com.example.alibaba.R
+import com.example.alibaba.model.TrainTicket
 
 class TrainFragment  : Fragment() {
     private lateinit var binding: FragmentTrainBinding
@@ -24,6 +25,7 @@ class TrainFragment  : Fragment() {
         Constants.originTrainCity = null
         Constants.destinationTrainCity = null
         Constants.date = null
+        Constants.trainTicket = null
 
 
         binding.trainSelectOrigin.setOnClickListener {
@@ -52,17 +54,49 @@ class TrainFragment  : Fragment() {
         binding.trainBtnWent.setOnClickListener {
             if (roundRound){
                 binding.trainCalendar.text = "تاریخ رفت"
-                binding.trainBtnReturn.setBackgroundResource(0)
+                binding.trainBtnReturn.setBackgroundResource(R.color.toolbarWhite)
                 binding.trainBtnWent.setBackgroundResource(R.color.toolbarColor)
+                binding.trainOrigin.text = "مبدا"
+                binding.trainDestination.text = "مقصد"
+                Constants.originTrainCity = null
+                Constants.destinationTrainCity = null
+                Constants.date = null
+                Constants.trainTicket = null
                 roundRound = false
             }
         }
         binding.trainBtnReturn.setOnClickListener {
             if (!roundRound){
                 binding.trainCalendar.text = "تاریخ رفت - تاریخ برگشت"
-                binding.trainBtnWent.setBackgroundResource(0)
+                binding.trainBtnWent.setBackgroundResource(R.color.toolbarWhite)
                 binding.trainBtnReturn.setBackgroundResource(R.color.toolbarColor)
+                binding.trainOrigin.text = "مبدا"
+                binding.trainDestination.text = "مقصد"
+                Constants.originTrainCity = null
+                Constants.destinationTrainCity = null
+                Constants.date = null
+                Constants.trainTicket = null
                 roundRound = true
+            }
+        }
+
+        binding.trainBtnSearch.setOnClickListener {
+            if (Constants.originTrainCity != null && Constants.destinationTrainCity != null && Constants.date != null) {
+               var countP = Constants.trainChild + Constants.trainAdult + Constants.trainInfant
+                Constants.trainTicket = TrainTicket(
+                    Constants.trainAdult ,
+                    Constants.trainChild ,
+                    Constants.date!! ,
+                    Constants.destinationTrainCity!!.domainCode ,
+                    Constants.trainInfant ,
+                    Constants.trainIsExclusiveCompartment ,
+                    Constants.originTrainCity!!.domainCode ,
+                    countP,
+                    "family"
+                )
+                val intent = Intent(activity!!.baseContext, SearchTicketActivity::class.java)
+                intent.putExtra("type", "train")
+                startActivity(intent)
             }
         }
 

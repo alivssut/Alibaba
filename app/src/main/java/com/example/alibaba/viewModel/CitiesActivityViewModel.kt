@@ -42,4 +42,12 @@ class CitiesActivityViewModel (private val repository: Repository): ViewModel(){
         }
     }
 
+    fun hotelDomestic(activity : Activity){
+        viewModelScope.launch {
+            val response = repository.getInternationalFlyCities(activity)
+            myResponseInternationalFly.value = response
+        }
+    }
+
+
 }

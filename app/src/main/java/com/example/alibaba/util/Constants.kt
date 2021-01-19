@@ -15,8 +15,15 @@ class Constants {
         val orogin : String? = null
         val destination : String? = null
 
+
+
+        var trainTicket : TrainTicket? = null
         var originTrainCity : TrainStations? = null
         var destinationTrainCity : TrainStations? = null
+        var trainAdult : Int = 1
+        var trainChild : Int = 0
+        var trainInfant : Int = 0
+        var trainIsExclusiveCompartment : Boolean = false
 
         var originDomesticCity : DomesticFly? = null
         var destinationDomesticCity : DomesticFly? = null

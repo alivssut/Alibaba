@@ -20,6 +20,7 @@ class CitiesActivity : AppCompatActivity() {
     val domesticCitiesUrl = "basic-info/airports/domestic"
     val internationalCitiesUrl =
         "basic-info/airports/international?filter=q%3D%7Bct%3A%22%20%22%7D"
+    val airportsUrl = "flightInfo/airports"
     private lateinit var binding: ActivityCitiesBinding
     lateinit var viewModel: CitiesActivityViewModel
     lateinit var recyclerView: RecyclerView
@@ -37,11 +38,16 @@ class CitiesActivity : AppCompatActivity() {
 
         val state: String = intent.getStringExtra("state")!!
         val type: String = intent.getStringExtra("type")!!
+
+        if (state == "origin")binding.citiesToolbarTitle.text = "انتخاب مبدا"
+        if (state == "destination")binding.citiesToolbarTitle.text = "انتخاب مقصد"
+
         var url = ""
         if (type == "train") url = trainCitiesUrl
         else if (type == "bus") url = busCitiesUrl
         else if (type == "domestic") url = domesticCitiesUrl
         else if (type == "international") url = internationalCitiesUrl
+        else if (type == "airport") url = airportsUrl
 
         val repository = Repository(url, state)
         repository.recyclerView = recyclerView
@@ -60,6 +66,10 @@ class CitiesActivity : AppCompatActivity() {
             viewModel.domesticCities(this)
         }else if (type == "international") {
             viewModel.internationalCities(this)
+        }else if (type == "hotel"){
+            viewModel.hotelDomestic(this)
+        }else if(type == "airport"){
+            viewModel.domesticCities(this)
         }
         viewModel.myResponse.observe(this, Observer { response ->
 

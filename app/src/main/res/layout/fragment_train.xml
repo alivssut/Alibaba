@@ -53,7 +53,8 @@
                             android:layout_centerInParent="true"
                             android:text="رفت و برگشت"
                             android:textSize="15sp"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:background="#fff"/>
 
                     </RelativeLayout>
 
@@ -140,8 +141,7 @@
 
                         <ImageView
                             android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/replace" />
+                            android:layout_height="30dp" />
                     </RelativeLayout>
 
 
@@ -343,6 +343,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/train_btn_search"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

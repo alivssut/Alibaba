@@ -7,13 +7,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.JsonRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.alibaba.*
 import com.example.alibaba.model.*
 import com.example.alibaba.view.*
 import com.example.test.util.Constants
+import org.json.JSONException
+import org.json.JSONObject
 
 class Repository(private val url: String, var state: String) {
     //    var adapter: CitiesAdapter? = null
@@ -48,6 +53,32 @@ class Repository(private val url: String, var state: String) {
                     recyclerView!!.layoutManager = layoutManager
                     recyclerView!!.adapter = adapter
 
+                },
+                Response.ErrorListener { error ->
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG)
+                        .show()
+                    Log.i("error ====>: ", error.toString())
+                    Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG).show()
+
+                }
+            ) {}
+            queue.add(request)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return Constants.citiesList
+    }
+
+    suspend fun getHotelsDomestic(activity: Activity): MutableList<Cities> {
+        var list: MutableList<Cities> = arrayListOf()
+        try {
+            val path =
+                Constants.BASE_URL + url
+            val queue = Volley.newRequestQueue(activity)
+            val request: StringRequest = object : StringRequest(
+                Method.GET,
+                path,
+                Response.Listener { response ->
                 },
                 Response.ErrorListener { error ->
                     Toast.makeText(activity.baseContext, error.toString(), Toast.LENGTH_LONG)
@@ -112,7 +143,6 @@ class Repository(private val url: String, var state: String) {
                 Method.GET,
                 path,
                 Response.Listener { response ->
-                    Toast.makeText(activity.baseContext, "res", Toast.LENGTH_LONG).show()
                     val domesticFlyJsonParser = DomesticFlyJsonParser()
                     list = arrayListOf()
                     list = domesticFlyJsonParser.parseJson(response)
@@ -254,5 +284,116 @@ class Repository(private val url: String, var state: String) {
         return list
     }
 
+    suspend fun sendTrainTicketRequest(activity: Activity): MutableList<TrainTicket> {
+        var list: MutableList<TrainTicket> = arrayListOf()
+        try {
+
+            var paramsObject = Constants.trainTicket
+            val params = JSONObject()
+            params.put("adult", paramsObject!!.adult)
+            params.put("child", paramsObject!!.child)
+            params.put("departureDate", paramsObject!!.departureDate)
+            params.put("destination", paramsObject!!.destination)
+            params.put("infant", paramsObject!!.infant)
+            params.put("isExclusiveCompartment", paramsObject!!.isExclusiveCompartment)
+            params.put("origin", paramsObject!!.origin)
+            params.put("passengerCount", paramsObject!!.passengerCount)
+            params.put("ticketType", paramsObject!!.ticketType)
+
+            val queue = Volley.newRequestQueue(activity)
+
+            val path =
+                Constants.BASE_URL + url
+
+            val jsonRequest = JsonObjectRequest(Request.Method.POST, path, params,
+                Response.Listener {response ->
+
+                    Log.d("t ti ",response.toString())
+                },
+                Response.ErrorListener {
+
+                }
+            )
+
+            queue.add(jsonRequest)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
+    }
+
+    suspend fun sendDomesticTicketRequest(activity: Activity): MutableList<Tickets> {
+        var list: MutableList<Tickets> = arrayListOf()
+        try {
+
+            var paramsObject = Constants.trainTicket
+            val params = JSONObject()
+            params.put("adult", paramsObject!!.adult)
+            params.put("child", paramsObject!!.child)
+            params.put("departureDate", paramsObject!!.departureDate)
+            params.put("destination", paramsObject!!.destination)
+            params.put("infant", paramsObject!!.infant)
+            params.put("isExclusiveCompartment", paramsObject!!.isExclusiveCompartment)
+            params.put("origin", paramsObject!!.origin)
+            params.put("passengerCount", paramsObject!!.passengerCount)
+            params.put("ticketType", paramsObject!!.ticketType)
+
+            val queue = Volley.newRequestQueue(activity)
+
+            val path =
+                Constants.BASE_URL + url
+
+            val jsonRequest = JsonObjectRequest(Request.Method.POST, path, params,
+                Response.Listener {response ->
+
+                },
+                Response.ErrorListener {
+
+                }
+            )
+
+            queue.add(jsonRequest)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
+    }
+
+    suspend fun sendInternationalTicketRequest(activity: Activity): MutableList<Tickets> {
+        var list: MutableList<Tickets> = arrayListOf()
+        try {
+
+            var paramsObject = Constants.trainTicket
+            val params = JSONObject()
+            params.put("adult", paramsObject!!.adult)
+            params.put("child", paramsObject!!.child)
+            params.put("departureDate", paramsObject!!.departureDate)
+            params.put("destination", paramsObject!!.destination)
+            params.put("infant", paramsObject!!.infant)
+            params.put("isExclusiveCompartment", paramsObject!!.isExclusiveCompartment)
+            params.put("origin", paramsObject!!.origin)
+            params.put("passengerCount", paramsObject!!.passengerCount)
+            params.put("ticketType", paramsObject!!.ticketType)
+
+            val queue = Volley.newRequestQueue(activity)
+
+            val path =
+                Constants.BASE_URL + url
+
+            val jsonRequest = JsonObjectRequest(Request.Method.POST, path, params,
+                Response.Listener {response ->
+
+                },
+                Response.ErrorListener {
+
+                }
+            )
+
+            queue.add(jsonRequest)
+        } catch (e: Exception) {
+            Toast.makeText(activity.baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+        }
+        return list
+    }
 
 }

@@ -1,9 +1,9 @@
 package com.example.alibaba.view
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
@@ -11,9 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.alibaba.MainHeadJsonParser
 import com.example.alibaba.R
 import com.example.alibaba.databinding.ActivityMainBinding
-import com.example.alibaba.factory.HomeViewModelFactory
 import com.example.alibaba.factory.MainViewModelFactory
-import com.example.alibaba.viewModel.HomeViewModel
 import com.example.alibaba.viewModel.MainViewModel
 import com.example.test.repository.Repository
 import com.example.test.util.Constants
@@ -24,18 +22,28 @@ class MainActivity : AppCompatActivity() ,Repository.Iconnect{
     lateinit var viewModel: MainViewModel
 
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
         setContentView(binding.root)
 
         binding.mainHomeAction.setOnClickListener {
+            binding.mainHomeText.setTextColor(Color.parseColor("#FFC107"))
+            binding.mainAccountText.setTextColor(R.color.colorPrimary)
+            binding.mainMyTravelText.setTextColor(R.color.colorPrimary)
             setHome()
         }
         binding.mainMyTravelAction.setOnClickListener {
+            binding.mainHomeText.setTextColor(R.color.colorPrimary)
+            binding.mainAccountText.setTextColor(R.color.colorPrimary)
+            binding.mainMyTravelText.setTextColor(Color.parseColor("#FFC107"))
             setMyTravel()
         }
         binding.mainAccountAction.setOnClickListener {
+            binding.mainHomeText.setTextColor(R.color.colorPrimary)
+            binding.mainAccountText.setTextColor(Color.parseColor("#FFC107"))
+            binding.mainMyTravelText.setTextColor(R.color.colorPrimary)
             setAccount()
         }
 
@@ -108,22 +116,12 @@ class MainActivity : AppCompatActivity() ,Repository.Iconnect{
     }
 
     override fun set() {
-//        Toast.makeText(this , "connect" , Toast.LENGTH_LONG).show()
-        Log.i("c " , set.toString())
-
-
-
-
-
         Constants.c = Constants.a
         val mainHeadJsonParser = MainHeadJsonParser()
         val b = mainHeadJsonParser.parseJson(Constants.a)
 
         Constants.mainPage = b
         if (set == false)setHome()
-
-//        Log.i("b " , b!!.mainProducts[0].title.toString())
-
 
     }
 }

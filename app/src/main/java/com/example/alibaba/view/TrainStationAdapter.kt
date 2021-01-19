@@ -43,9 +43,9 @@ RecyclerView.Adapter<TrainStationAdapter.ViewHolder>() {
         holder.cityName.text = dataSet[position].name
         holder.cityIndex.text = position.toString()
         holder.itemLayout.setOnClickListener {
-            if (travelState == "origin")
+            if (travelState == "destination")
                 Constants.originTrainCity = dataSet[position]
-            else if (travelState == "destination")
+            else if (travelState == "origin")
                 Constants.destinationTrainCity = dataSet[position]
             activity.onBackPressed()
 

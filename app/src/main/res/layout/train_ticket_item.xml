@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_margin="10dp"
+    android:background="#E6CDCD">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/train_ticket_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="کوپه ای 4 نفره"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <ImageView
+            android:id="@+id/train_ticket_item_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/speaker"/>
+
+        <TextView
+            android:id="@+id/train_ticket_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/train_ticket_item_icon"
+            android:text="21:05 12:40"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/train_ticket_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="708000"
+            android:layout_toRightOf="@id/price_type"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/price_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ریال"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:id="@+id/train_ticket_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="رجا"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            />
+
+        <TextView
+            android:id="@+id/train_ticket_room_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/train_ticket_station"
+            android:text="21:0512:40"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:id="@+id/train_ticket_capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ظرفیت تکمیل"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="10dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

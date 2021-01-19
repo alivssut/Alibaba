@@ -41,13 +41,7 @@ class BusFragment : Fragment() {
         val viewModelFactory = BusViewModeFactory(repository)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(BusViewModel::class.java)
-
-
-//        viewModel.listOfBusStations(activity!!)
-//        viewModel.myResponse.observe(activity!! , Observer {response->
-//
-//
-//        })
+        
 
         binding.busSelectDestination.setOnClickListener {
             val intent = Intent(activity!!.baseContext, CitiesActivity::class.java)
@@ -76,7 +70,9 @@ class BusFragment : Fragment() {
                     Constants.date!!,
                     "1"
                 )
-                startActivity(Intent(activity!!.baseContext, SearchTicketActivity::class.java))
+                var intent = Intent(activity!!.baseContext, SearchTicketActivity::class.java)
+                intent.putExtra("type" , "bus")
+                startActivity(intent)
             }
         }
 

@@ -1,7 +1,9 @@
 package com.example.alibaba.view
 
 import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -14,29 +16,21 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.alibaba.R
 import com.example.alibaba.databinding.FragmentHomeBinding
-import com.example.alibaba.factory.BusViewModeFactory
-import com.example.alibaba.factory.HomeViewModelFactory
 import com.example.alibaba.model.*
-import com.example.alibaba.viewModel.BusViewModel
 import com.example.alibaba.viewModel.HomeViewModel
-import com.example.test.repository.Repository
 import com.example.test.util.Constants
-import kotlinx.android.synthetic.*
 
 class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: TextView) :
     Fragment() {
     private lateinit var binding: FragmentHomeBinding
     lateinit var viewModel: HomeViewModel
+    var tourUri = "https://www.alibaba.ir/tour"
 
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.M)
@@ -138,14 +132,28 @@ class HomeFragment(val toolbar: androidx.appcompat.widget.Toolbar, val title: Te
         }
 
         binding.homeTourAction.setOnClickListener {
-            val intent = Intent(activity!!.baseContext, TicketActivity::class.java)
-            intent.putExtra("name", "tour")
-            startActivity(intent)
+            try {
+                val myIntent = Intent(Intent.ACTION_VIEW, Uri.parse(tourUri))
+                startActivity(myIntent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(
+                    activity!!.baseContext, "No application can handle this request."
+                            + " Please install a webbrowser", Toast.LENGTH_LONG
+                ).show()
+                e.printStackTrace()
+            }
         }
         binding.homeTourDrawerAction.setOnClickListener {
-            val intent = Intent(activity!!.baseContext, TicketActivity::class.java)
-            intent.putExtra("name", "tour")
-            startActivity(intent)
+            try {
+                val myIntent = Intent(Intent.ACTION_VIEW, Uri.parse(tourUri))
+                startActivity(myIntent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(
+                    activity!!.baseContext, "No application can handle this request."
+                            + " Please install a webbrowser", Toast.LENGTH_LONG
+                ).show()
+                e.printStackTrace()
+            }
         }
 
         binding.homeHotelAction.setOnClickListener {

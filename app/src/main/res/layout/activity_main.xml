@@ -29,7 +29,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:background="#fff"
             android:orientation="horizontal"
@@ -39,67 +39,58 @@
             <LinearLayout
                 android:id="@+id/main_account_action"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="7dp"
-                    android:src="@drawable/speaker" />
-
                 <TextView
+                    android:id="@+id/main_account_text"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:text="حساب کاربری" />
+                    android:text="حساب کاربری"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/colorPrimary"
+                    />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/main_my_travel_action"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="7dp"
-                    android:src="@drawable/speaker" />
-
                 <TextView
+                    android:id="@+id/main_my_travel_text"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:text="سفر های من" />
+                    android:text="سفر های من"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/main_home_action"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="7dp"
-                    android:src="@drawable/speaker" />
 
                 <TextView
+                    android:id="@+id/main_home_text"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:text="خانه"
-                    android:textColor="#FAE600" />
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/toolbarColor" />
 
             </LinearLayout>
 

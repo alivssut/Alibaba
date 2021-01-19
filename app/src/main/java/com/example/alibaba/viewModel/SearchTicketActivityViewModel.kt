@@ -17,5 +17,11 @@ class SearchTicketActivityViewModel (private val repository: Repository): ViewMo
             myResponse.value = response
         }
     }
+    fun trainParametersRequest(activity : Activity){
+        viewModelScope.launch {
+            val response = repository.sendTicketRequest(activity)
+            myResponse.value = response
+        }
+    }
 
 }

@@ -2,6 +2,7 @@ package com.example.alibaba.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +62,7 @@ class FlyFragment : Fragment() {
         binding.plainBtnWent.setOnClickListener {
             if (roundRound) {
                 binding.plainCalendar.text = "تاریخ رفت"
-                binding.plainBtnReturn.setBackgroundResource(0)
+                binding.plainBtnReturn.setBackgroundResource(R.color.toolbarWhite)
                 binding.plainBtnWent.setBackgroundResource(R.color.toolbarColor)
                 roundRound = false
             }
@@ -69,7 +70,7 @@ class FlyFragment : Fragment() {
         binding.plainBtnReturn.setOnClickListener {
             if (!roundRound) {
                 binding.plainCalendar.text = "تاریخ رفت - تاریخ برگشت"
-                binding.plainBtnWent.setBackgroundResource(0)
+                binding.plainBtnWent.setBackgroundResource(R.color.toolbarWhite)
                 binding.plainBtnReturn.setBackgroundResource(R.color.toolbarColor)
                 roundRound = true
             }
@@ -78,15 +79,15 @@ class FlyFragment : Fragment() {
 
         binding.plainDomestic.setOnClickListener {
             if (!domestic) {
-                binding.plainDomesticText.setTextColor(R.color.black)
-                binding.plainInternationalText.setTextColor(R.color.line)
+                binding.plainDomesticText.setTextColor(Color.parseColor("#000000"))
+                binding.plainInternationalText.setTextColor(Color.parseColor("#8F8F8F"))
                 domestic = true
             }
         }
         binding.plainInternational.setOnClickListener {
             if (domestic) {
-                binding.plainDomesticText.setTextColor(R.color.line)
-                binding.plainInternationalText.setTextColor(R.color.black)
+                binding.plainDomesticText.setTextColor(Color.parseColor("#8F8F8F"))
+                binding.plainInternationalText.setTextColor(Color.parseColor("#000000"))
                 domestic = false
             }
         }

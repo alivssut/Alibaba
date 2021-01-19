@@ -1,5 +1,6 @@
 package com.example.alibaba.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,20 @@ class HotelFragment  : Fragment() {
     ): View? {
         binding = FragmentHotelBinding.inflate(layoutInflater)
 
+
+
+        binding.hotelOrigin.setOnClickListener {
+            val intent = Intent(activity!!.baseContext, CitiesActivity::class.java)
+            intent.putExtra("state", "origin")
+            intent.putExtra("type", "hotel")
+            startActivity(intent)
+        }
+
+        binding.hotelDateSelect.setOnClickListener {
+            val intent = Intent(activity!!.baseContext, CalendarActivity::class.java)
+            intent.putExtra("count", "1")
+            startActivity(intent)
+        }
 
         return binding.root
     }
