@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() ,Repository.Iconnect{
         var mainHeadJsonParser = MainHeadJsonParser()
         var b = mainHeadJsonParser.parseJson(Constants.a)
 
-        Log.i("b " , b.toString())
+        Log.i("b " , b!!.mainProducts[0].title.toString())
 
 
     }
