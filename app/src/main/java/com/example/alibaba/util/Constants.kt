@@ -8,6 +8,9 @@ class Constants {
         var citiesList : MutableList<Cities> = arrayListOf()
 
         var a = ""
+        var c = ""
+
+        var mainPage : MainPage? = null
 
         val orogin : String? = null
         val destination : String? = null

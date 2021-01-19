@@ -151,23 +151,19 @@
 
                 </RelativeLayout>
 
-                <androidx.cardview.widget.CardView
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/recycler_slider_one"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginBottom="5dp"
-                    android:elevation="0dp"
-                    app:cardCornerRadius="15dp">
+                    >
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/freeuse" />
 
-                </androidx.cardview.widget.CardView>
+
+                </androidx.viewpager2.widget.ViewPager2>
 
 
                 <RelativeLayout
@@ -216,6 +212,22 @@
 
                 </RelativeLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="دانستنی های سفر"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/home_recycler_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+
+                </LinearLayout>
+
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -254,14 +266,53 @@
                 </RelativeLayout>
 
 
-                <androidx.recyclerview.widget.RecyclerView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:orientation="horizontal" />
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="تضمین کمترین قیمت تور در علی بابا"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_slider_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="پیشنهاد هتل خارجی"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_grid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="پیشنهاد هتل داخلی"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_usp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"

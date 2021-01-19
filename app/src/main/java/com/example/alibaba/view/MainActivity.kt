@@ -6,14 +6,22 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.alibaba.MainHeadJsonParser
 import com.example.alibaba.R
 import com.example.alibaba.databinding.ActivityMainBinding
+import com.example.alibaba.factory.HomeViewModelFactory
+import com.example.alibaba.factory.MainViewModelFactory
+import com.example.alibaba.viewModel.HomeViewModel
+import com.example.alibaba.viewModel.MainViewModel
 import com.example.test.repository.Repository
 import com.example.test.util.Constants
 
 class MainActivity : AppCompatActivity() ,Repository.Iconnect{
     private lateinit var binding: ActivityMainBinding
+    var set = false
+    lateinit var viewModel: MainViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +40,20 @@ class MainActivity : AppCompatActivity() ,Repository.Iconnect{
         }
 
 
+        val repository = Repository("mobile/applications/159/page/home?headerVersion=0&bodyVersion=0&footerVersion=0", "")
+        val viewModelFactory = MainViewModelFactory(repository)
+
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+
+
+        viewModel.getDetails(this)
+
+        viewModel.myResponse.observe(this, Observer { response ->
+
+
+        })
+
+
 
     }
 
@@ -45,10 +67,11 @@ class MainActivity : AppCompatActivity() ,Repository.Iconnect{
         setSupportActionBar(binding.pageToolBar).apply {
             title = ""
         }
-        setHome()
+//        setHome()
     }
 
     fun setHome(){
+        set = true
         var  homeFragment = HomeFragment(
             binding.pageToolBar,
             binding.toolbarTitle
@@ -85,14 +108,21 @@ class MainActivity : AppCompatActivity() ,Repository.Iconnect{
     }
 
     override fun set() {
-        Toast.makeText(this , "connect" , Toast.LENGTH_LONG).show()
-        Log.i("c " , Constants.a)
+//        Toast.makeText(this , "connect" , Toast.LENGTH_LONG).show()
+        Log.i("c " , set.toString())
 
 
-        var mainHeadJsonParser = MainHeadJsonParser()
-        var b = mainHeadJsonParser.parseJson(Constants.a)
 
-        Log.i("b " , b!!.mainProducts[0].title.toString())
+
+
+        Constants.c = Constants.a
+        val mainHeadJsonParser = MainHeadJsonParser()
+        val b = mainHeadJsonParser.parseJson(Constants.a)
+
+        Constants.mainPage = b
+        if (set == false)setHome()
+
+//        Log.i("b " , b!!.mainProducts[0].title.toString())
 
 
     }

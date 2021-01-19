@@ -184,15 +184,15 @@ class MainHeadJsonParser {
                 bannerCollection2Item
             )
 
-            var footerItems = jsonFooter.getJSONArray("items")
+            val footerItems = jsonFooter.getJSONArray("items")
 
-            var uspCollectionItem: MutableList<UspCollection> = arrayListOf()
+            val uspCollectionItem: MutableList<UspCollection> = arrayListOf()
 
 
             for (i in 0 until footerItems.length()) {
                 if (i == 0) {
-                    var obj = footerItems.getJSONObject(i)
-                    var arr = obj.getJSONArray("uspItem")
+                    val obj = footerItems.getJSONObject(i).getJSONObject("uspCollection")
+                    val arr = obj.getJSONArray("uspItem")
                     for (j in 0 until arr.length()) {
                         var itemObjF = arr.getJSONObject(j)
                         uspCollectionItem.add(
